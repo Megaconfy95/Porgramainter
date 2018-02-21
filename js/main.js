@@ -8,32 +8,29 @@ function preload() {
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
 }
-var platformns;
+var platforms;
 
 function create() {
 
-  game.physics.startSystem(Phaser.Physics.ARCADE);
-
-   game.add.sprite(0, 0, 'sky');
-
-    platformns = game.add.group();
-
-    platformns.enableBody =true;
-
-    var ground =platformns.create(0,game.world.height - 64,'ground');
-
+    //game.add.sprite(0, 0, 'star');
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.add.sprite(0, 0, 'sky');
+    platforms = game.add.group();
+    platforms.enableBody = true;
+    var ground = platforms.create(0, game.world.height - 64, 'ground');
     ground.scale.setTo(2, 2);
+    ground.body.immovable = true;
 
-    ground.body.inmovable = true;
+    var ledge= platforms.create(400, 400, 'ground');
 
-    var ledge = platformns.create(400, 400, 'ground');
-
-    ledge.body.inmovable = true;
-    ledge = platformns.create(-150, 250, 'ground');
-    ledge.body.inmovable = true;
+    ledge.body.immovable = true;
+    ledge = platforms.create(-150, 250, 'ground');
+    ledge.body.immovable = true;
 
 
 }
 
 function update() {
 }
+
+
